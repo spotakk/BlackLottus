@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar</title>
+</head>
+<body>
+    <div id="root">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap');
+        html, body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow: hidden;
+        }
+
+        #root {
+            font-family: "DM Sans";
+            position: absolute;
+            top: 40vw;
+            display: inline;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .WHC212 {
+            position: relative;
+            margin: 15px;
+            width: 224px;
+            height: 124px;
+            border-radius: 10px;
+            background: linear-gradient(0deg, #101015, #101015),linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        
+
+        .WHC230 {
+            display: flex;
+            font-style: normal;
+            background: linear-gradient(90deg, #727ABF 0%, #5763D0 100%);
+            color: #FFFFFF;
+            line-height: -10px;
+            width: 202px;
+            height: 30px;
+            border-radius: 3px;
+            margin: 12px
+        }
+        .WHC230 h1 {
+            font-size: 12px; 
+            font-weight: 500;
+            text-align: center;
+            margin-left: 16px;
+
+        }
+        .WHC230 svg {
+            margin: 2px 0px 0px 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .info_text {
+            width: 30%;
+            margin-left: 12px;
+        }
+        .infos {
+            display: flex;
+        }
+        .info_text p {
+            margin: 0;
+            margin-bottom: 3px;
+            color: rgba(255, 255, 255, 0.35);
+            font-family: DM Sans;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+
+            line-height: normal;
+        }
+
+        .info_changeable {
+            width: 70%;
+            margin-right: 12px;
+        }
+        .info_changeable p {
+            margin: 0;
+            text-align: end;
+            margin-bottom: 3px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: DM Sans;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+
+            line-height: normal;
+        }
+        .info_changeable p span {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 11px;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-left: 90px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #radar {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        #codes {
+            width: 100%;
+            display: inline;
+        }
+        #midCode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #midCode div {
+            background: linear-gradient(0deg, #101015, #101015),linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0) 100%);
+            font-size: 12px;
+            color: #FFF;
+            border-radius: 5px;
+	        padding: 10px 15px;
+            margin: 10px;
+        }
+        #midCode div:hover {
+            background: linear-gradient(90deg, #727ABF 0%, #5763D0 100%);
+        }
+
+        @media screen and (min-width: 1080px) and (max-height: 1920px) {
+            #root {
+                top: 45vw;
+            }
+
+        }
+    </style>
+    <script>
+        window.addEventListener("message",function(event){
+            const data = event["data"];
+            if(data["showRadar"]){
+                if(data["value"]["front"]) wTracker("front",data["value"]["front"],data["value"].measurement);
+                if(data["value"]["back"]) wTracker("back",data["value"]["back"],data["value"].measurement);
+            }else if(data["updateRadar"]){
+
+
+                if(data["value"]["front"]) wUpdateTracker("front",data["value"]["front"],data["value"].measurement);
+                if(data["value"]["back"]) wUpdateTracker("back",data["value"]["back"],data["value"].measurement);
+            
+            } else if(data["hideRadar"]) {
+                const radar = document.getElementById('radar');
+                radar.innerHTML = '';
+            } else if(data["showCodes"]) {
+                wCodes(true)
+            } else if(data["hideCodes"]) {
+                wCodes(false)
+
+            }
+             
+        })
+        const svg = {
+            back:`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 18.414L8.293 13.707C8.20016 13.6142 8.12651 13.5039 8.07626 13.3826C8.02601 13.2613 8.00015 13.1313 8.00015 13C8.00015 12.8687 8.02601 12.7387 8.07626 12.6174C8.12651 12.4961 8.20016 12.3858 8.293 12.293C8.38584 12.2002 8.49607 12.1265 8.61737 12.0763C8.73868 12.026 8.8687 12.0002 9 12.0002C9.1313 12.0002 9.26132 12.026 9.38263 12.0763C9.50393 12.1265 9.61416 12.2002 9.707 12.293L12 14.586V7C12 6.73479 12.1054 6.48043 12.2929 6.29289C12.4804 6.10536 12.7348 6 13 6C13.2652 6 13.5196 6.10536 13.7071 6.29289C13.8946 6.48043 14 6.73479 14 7V14.586L16.293 12.293C16.3857 12.1998 16.4958 12.1259 16.6171 12.0754C16.7385 12.0249 16.8686 11.999 17 11.999C17.1314 11.999 17.2615 12.0249 17.3829 12.0754C17.5042 12.1259 17.6143 12.1998 17.707 12.293C17.7999 12.3858 17.8737 12.496 17.924 12.6173C17.9743 12.7386 18.0002 12.8687 18.0002 13C18.0002 13.1313 17.9743 13.2614 17.924 13.3827C17.8737 13.504 17.7999 13.6142 17.707 13.707L13 18.414Z" fill="white"/></svg>`,
+            front: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 5.586L8.293 10.293C8.20016 10.3858 8.12651 10.4961 8.07626 10.6174C8.02601 10.7387 8.00015 10.8687 8.00015 11C8.00015 11.1313 8.02601 11.2613 8.07626 11.3826C8.12651 11.5039 8.20016 11.6142 8.293 11.707C8.38585 11.7998 8.49607 11.8735 8.61738 11.9237C8.73868 11.974 8.8687 11.9998 9 11.9998C9.1313 11.9998 9.26132 11.974 9.38263 11.9237C9.50393 11.8735 9.61416 11.7998 9.707 11.707L12 9.414V17C12 17.2652 12.1054 17.5196 12.2929 17.7071C12.4804 17.8946 12.7348 18 13 18C13.2652 18 13.5196 17.8946 13.7071 17.7071C13.8946 17.5196 14 17.2652 14 17V9.414L16.293 11.707C16.3857 11.8002 16.4958 11.8741 16.6171 11.9246C16.7385 11.9751 16.8686 12.001 17 12.001C17.1314 12.001 17.2615 11.9751 17.3829 11.9246C17.5042 11.8741 17.6143 11.8002 17.707 11.707C17.7999 11.6142 17.8737 11.504 17.924 11.3827C17.9743 11.2614 18.0002 11.1313 18.0002 11C18.0002 10.8687 17.9743 10.7386 17.924 10.6173C17.8737 10.496 17.7999 10.3858 17.707 10.293L13 5.586Z" fill="white"/></svg>`
+        }
+
+        function TextLengthFormat(text) {
+        if (text.length > 19) {
+            return text.slice(0, 19);
+        } else {
+            return text;
+        }
+        }
+
+        function wTracker(type, value,measurement) {
+            const labelText = type === "back" ? "RADAR TRASEIRO" : "RADAR DIÂNTEIRO";
+
+            value.text = labelText;
+            let radar = document.getElementById('radar');
+            if(!radar) {
+                const root = document.getElementById('root');
+                radar = document.createElement('id');
+                radar.id = "radar"
+                root.appendChild(radar);
+
+            }
+            const div = document.createElement('div');
+            div.classList.add('WHC212');
+						console.log(type)
+            div.innerHTML = `
+                <div class="WHC230 radar_info">
+                    ${svg[type]}
+                    <h1>${labelText}</h1>
+                </div>
+								<div class="infos" id="${type}">
+										<div class="loading-spinner"></div>
+								</div>
+            `
+            radar.appendChild(div);
+            //radar.appendChild(div);
+        }
+        const elements = ["plate","vehicle"]
+        function wUpdateTracker(type,value,measurement){
+					let divChangeable = document.getElementById(type+'_speed');
+					if(!divChangeable) {
+						const radar = document.getElementById(type);
+						console.log(radar,"Radar")
+						if(radar){
+							radar.innerHTML = `
+								<div class="info_text">
+										<p>Placa:</p>
+										<p>Modelo:</p>
+										<p>Velocidade:</p>
+								</div>
+								<div class="info_changeable">
+										<p id="${type}_plate">${value["plate"]}</p>
+										<p id="${type}_vehicle">${TextLengthFormat(value["vehicle"])}</p>
+										<p id="${type}_speed">${parseInt(value["speed"])}<span> ${measurement}</span></p>
+								</div>
+								`
+						}
+					}
+					const divType = type === "back" ? 1 : 0;
+					if(value["speed"] && divChangeable){
+							const spanElement = divChangeable.querySelector('span');
+							divChangeable.innerHTML = `
+							${parseInt(value["speed"])}
+							<span>${spanElement.textContent}</span>`
+					}
+
+					elements.forEach((element) => {
+							let divChangeable = document.getElementById(type+'_'+element);
+							if(value[element] && divChangeable ){
+									divChangeable.textContent = TextLengthFormat(value[element])
+							}
+					})
+            
+        }
+
+        function wCodes(values){
+            let codes = document.getElementById('codes');
+            if(!codes) {
+                const root = document.getElementById('root');
+                codes = document.createElement('id');
+                codes.id = "codes"
+                root.insertBefore(codes, root.firstChild);
+            } else if(!values) {
+                return codes.style.display = "none"
+            }  else if(values) {
+                return codes.style.display = "inline"
+            }
+            const div = document.createElement('div');
+            div.classList.add('midCode');
+            div.innerHTML = `
+                <div id="midCode">
+                    <div onclick="clickCode('QRU');">QRU</div>
+                    <div onclick="clickCode('QRT');">QRT</div>
+                    <div onclick="clickCode('QTH');">QTH</div>
+                    <div onclick="clickCode('QRR');">QRR</div>
+                    <div onclick="clickCode('QTI');">QTI</div>
+                </div>
+            `
+            codes.appendChild(div);
+            
+        }
+
+        document.onkeyup = function(data){
+                if (data["which"] == 27){
+									fetch("http://tencode/closeSystem")
+									wCodes(false)
+                };
+        };
+        /* ---------------------------------------------------------------------------------------------------------------- */
+        const clickCode = (data) => {
+					fetch("http://tencode/sendCode", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ code: data })})
+					wCodes(false)
+        };
+
+    </script>
+</body>
+</html>

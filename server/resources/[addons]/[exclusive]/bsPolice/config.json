@@ -1,0 +1,109 @@
+{
+    "crimes": [
+        {
+            "id": "1",
+            "title": "Homocidio",
+            "desc": "Diante da inteligência dos artigos 121 e 129 do Código Penal, temos que a tentativa dehomicídio reside na vontade do agente de retirar a vida de outrem, bem como a lesão corporal é constituída pela ofensa à integridade corporal do indivíduo.",
+            "meses": 20,
+            "multas": 3000
+        },
+        {
+            "id": "2",
+            "title": "Roubo a loja de departamento",
+            "desc": "Assalto a mão armada em uma loja de departamentos",
+            "meses": 25,
+            "multas": 5000
+        },
+        {
+            "id": "3",
+            "title": "Roubo a loja de armas",
+            "desc": "Assalto a mão armada em uma Loja de Departamentos",
+            "meses": 23,
+            "multas": 5000
+        },
+        {
+            "id": "4",
+            "title": "Assalto a Banco Fleeca",
+            "desc": "Assalto a mão armada em um Banco Fleeca",
+            "meses": 35,
+            "multas": 10000
+        },
+        {
+            "id": "5",
+            "title": "Assalto a Banco de Paleto",
+            "desc": "Assalto a mão armada em um Banco de Paleto",
+            "meses": 40,
+            "multas": 15000
+        },
+        {
+            "id": "6",
+            "title": "Assalto a Banco Central",
+            "desc": "Assalto a mão armada em um Banco Central",
+            "meses": 50,
+            "multas": 20000
+        },
+        {
+            "id": "7",
+            "title": "Tentativa de fuga",
+            "desc": "Tentativa de fuga em uma abordagem policial",
+            "meses": 20,
+            "multas": 2000
+        },
+        {
+            "id": "8",
+            "title": "Posse de itens ilegais",
+            "desc": "Indivíduo portando qualquer tipo de item ilícito, sendo eles: Lockpick, algema, C4",
+            "meses": 20,
+            "multas": 1000
+        },
+        {
+            "id": "9",
+            "title": "Porte de armas - Calibre baixo",
+            "desc": "Indivíduo portando armas de baixo calibre",
+            "meses": 20,
+            "multas": 2000
+        },
+        {
+            "id": "10",
+            "title": "Porte de armas - Calibre Médio",
+            "desc": "Indivíduo portando armas de calibre médio, podendo ser Submetralhadoras ou Pistolas automáticas",
+            "meses": 30,
+            "multas": 3000
+        },
+        {
+            "id": "11",
+            "title": "Porte de armas - Calibre Alto",
+            "desc": "Indivíduo portando armas de calibre alto, podendo ser Rifles ou Shotguns",
+            "meses": 50,
+            "multas": 5000
+        },
+        {
+            "id": "12",
+            "title": "Porte de armas - Arma branca",
+            "desc": "Indivíduo portanto armas brancas que foram usadas para algum crime",
+            "meses": 10,
+            "multas": 500
+        },
+        {
+            "id": "13",
+            "title": "Roubo a pedestre",
+            "desc": "Indivíduo efetuou roubo a mão armada contra pedestres",
+            "meses": 20,
+            "multas": 1000
+        },
+        {
+            "id": "14",
+            "title": "Roubo de porta-malas",
+            "desc": "Indivíduo efetuou roubo a porta-malas de veículo",
+            "meses": 10,
+            "multas": 1000
+        },
+        {
+            "id": "15",
+            "title": "Furto a veículo",
+            "desc": "Indivíduo foi pego em flagrante com um veículo que não é de sua posse",
+            "meses": 20,
+            "multas": 1000
+        }
+    ]
+}

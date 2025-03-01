@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+#menu_container {
+ padding: 50px;
+	display: flex;
+	flex-direction: column;
+  transform: scale(0.9);
+  width: 340px;
+  height: 105px;
+  border-radius: 7px;
+}
+#menu_container > div {
+	margin: 5px  0px;
+}
+
+#menu_logo {
+  position: relative;
+  width: 340px;
+  height: 105px;
+}
+#menu_logo::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("../imgs/logo.png");
+  border-radius: 7px;
+}
+
+#menu_logo::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../imgs/logo-title.png");
+  background-color: rgba(21, 21, 21, 0.93);
+  border-radius: 7px;
+}
+#menu_heading {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 18pt;
+  font-style: oblique;
+  font-weight: 400;
+  color: rgb(236, 240, 241);
+
+  text-shadow: 1px 1px black;
+  background-color: #151515;
+  border-radius: 7px;
+  width: 340px;
+  height: 55px;
+}
+
+#menu_items {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: "Oswald", sans-serif;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: 300;
+  color: rgb(236, 240, 241);
+
+  list-style-type: none;
+  text-align: left;
+
+  width: 430px;
+}
+
+#menu_items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  width: 340px;
+  height: 55px;
+  background-color: #151515;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+#menu_items li.active::before {
+  position: absolute;
+  content: "";
+  left: -1px;
+  width: 3px;
+  height: 20px;
+  border-radius: 4rem;
+  background-color: white;
+}
+
+#menu_items li:hover {
+  font-style: normal;
+  font-weight: 500;
+  background-color: #ffff;
+  color: #000000;
+}
+.iconify {
+  transform: rotate(180deg);
+}
+
+.item_selected {
+  background-color: rgb(236, 240, 241) !important;
+  color: black;
+  font-weight: 400;
+}
+
+
+
+
+#menu_status {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 12pt;
+  font-style: oblique;
+  font-weight: 400;
+  color: rgb(236, 240, 241);
+
+  text-shadow: 1px 1px black;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 340px;
+
+
+}
+
+#menu_directions {
+  padding-top: 5.5px;
+  padding-bottom: 5.5px;
+  text-align: center;
+  font-size: 18pt;
+  color: rgb(236, 240, 241);
+
+  background-color: rgba(0, 0, 0, 0.6);
+}

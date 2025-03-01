@@ -1,0 +1,77 @@
+::-webkit-scrollbar { width: 0; }
+::selection { background: transparent; color: #0084ff; }
+::-moz-selection { background: transparent; color: #0084ff;  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'DM Sans';
+}
+
+* {
+	user-select: none;
+	box-sizing: border-box;
+}
+
+.target {
+	color: #fff;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	text-shadow: 1px 1px rgba(0,0,0,0.25);
+}
+
+.target-wrapper {
+	height: 400px;
+	position: absolute;
+	top: calc(50% - 15px);
+	left: calc(50% + 30px);
+}
+
+.target-eye {
+	transition: color 500ms;
+	color: #FFF;
+	font-size: 36px;
+}
+
+.target-label-wrapper {
+	float: left;
+}
+
+.target-label {
+	list-style: none;
+	user-select: none;
+	white-space: nowrap;
+
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.target-label div:nth-child(1) {
+	margin-top: 0 !important;
+}
+
+.target-label div {
+	display: table;
+	padding: 10px;
+
+	margin-top: 8px;
+
+	outline: 1px solid rgba(255, 255, 255, 0.05);
+	border-radius: 7px;
+  background: linear-gradient(45.72deg, rgba(255, 255, 255, 0.23) 11.1%, rgba(255, 255, 255, 0.23) 11.11%, rgba(255, 255, 255, 0.09) 100%);  
+
+  transition: all 200ms;
+}
+
+.target-label div:hover {
+  background: rgba(87, 99, 208, 0.65) 100%;
+
+	transform: scale(1.1);
+}

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: "Roboto";
+}
+
+.wPrompt {
+    position: absolute;
+    left: 50%; /* Posiciona o elemento no meio da tela horizontalmente */
+    top: 50%;  /* Posiciona o elemento no meio da tela verticalmente */
+    transform: translate(-50%, -50%);
+    width: 320px;
+    border-radius: 6px;
+    background: linear-gradient(0deg, #101015, #101015),linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0) 100%);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+.wPrompt .contents {
+    width: 82%;
+    height: 100%;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.wPrompt h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+
+}
+.wPrompt h2 {
+    opacity: 65%;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.wPrompt textarea {
+    background: #FFFFFF08;
+    color: #FFFFFFA6;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    line-height: normal;
+    font-style: normal;
+    font-size: 14px;
+    padding: 14px;
+    box-sizing: border-box;
+    resize: none;
+    position: absolute;
+    width: 260px;
+    height: 46px;
+    outline: none;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+    margin-bottom: 10px;
+
+}
+.contents textarea:focus {
+    border: 1px solid #FFFFFFA6;
+}
+
+.wPrompt button {
+    border-radius: 4px;
+    border: 1px solid #5763D0;
+    color: #ffffffe5;
+    text-align: center;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: linear-gradient(93deg, #5763D0 0%, rgba(87, 99, 208, 0.70) 100%);
+    width: 260px;
+    margin-top: 65px;
+    margin-bottom: 26px;
+    height: 56px;
+}
+
+.wPrompt button:hover {
+    background: linear-gradient(93deg, #5763D0 0%, rgba(87, 99, 208, 0.9) 100%);
+    color: #ffffff;
+
+}

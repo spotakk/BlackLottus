@@ -1,0 +1,540 @@
+:root {
+
+	--white-color: rgb(255, 255, 255);
+	--purple-color: #5763D0;
+
+}
+
+* {
+	
+	overflow: hidden;
+	box-sizing: border-box;
+	user-select: none;
+
+}
+
+body {
+	
+	margin: 0;
+	padding: 0;
+	color: var(--white-color);
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* ------------------- SCROLL ------------------- */
+
+*::-webkit-scrollbar { 
+	width: 3px;
+}
+
+*::-webkit-scrollbar-track { 
+	background: rgba(87, 99, 208, .1);
+	border-radius: 100px;
+}
+
+*::-webkit-scrollbar-thumb { 
+	background: rgb(87, 99, 208);
+	border-radius: 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* --------------------------------------------- */
+
+/* ------------------- RESET ------------------- */
+
+h1, h2, h3 {
+
+	margin: 0;
+
+}
+
+/* --------------------------------------------- */
+
+.inventory {
+	
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-image: url("nui://inventory/web-side/images/bg.png");
+	background-size: 100%;
+}
+
+.innerInventory {
+	display: flex;
+	flex-direction: column;
+}
+
+.sections {
+
+	display: flex;
+	height: 652px;
+	max-height: 652px;
+
+}
+
+.invLeft, .invRight {
+
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 4px;
+	overflow-y: scroll;
+	padding-right: 10px;
+	
+}
+
+.item {
+	
+	width: 125px;
+	height: 160px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	background: rgba(16, 16, 21, .2);
+	position: relative;
+	cursor: pointer;
+
+}
+
+.populated {
+
+	background-size: 86% !important;
+
+}
+
+.populated .nameItem {
+
+	position: absolute;
+	height: 0;
+	left: 0;
+	bottom: -60%;
+	transition: all .45s ease-in-out;
+
+}
+
+.populated:hover .nameItem {
+
+	height: 26px;
+	bottom: 0;
+	position: relative;
+
+}
+
+.hoverControl {
+
+	background: rgba(16, 16, 21, .6)
+
+}
+
+.item .top {
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 10px 0 10px;
+	font-size: .7rem;
+
+}
+
+.invLeft > .item:nth-child(n+1):nth-child(-n+5) .nameItem {
+
+	position: relative;
+	height: 26px;
+	bottom: 0;
+
+}
+
+.invLeft > .item:nth-child(n+1):nth-child(-n+5) {
+
+	background-color: rgba(255, 255, 255, .01);
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+
+.invRight .item {
+
+	transition: all .45s;
+
+}
+
+.invLeft > .item:nth-child(n+1):nth-child(-n+5).populated, .invRight .item.populated:hover {
+
+	background: rgba(16, 16, 21, 0.75);
+
+}
+
+.invLeft > .item:nth-child(n+1):nth-child(-n+5).populated .itemAmount {
+
+	border: 1px solid #5763D0;
+	background: rgba(87, 99, 208, .25);
+	
+}
+
+.invRight .populated:hover {
+
+	background: rgba(16, 16, 21, 0.75);
+
+}
+
+.invLeft > .item:nth-child(1){
+	background-image: url("nui://inventory/web-side/images/1.png");
+}
+
+.invLeft > .item:nth-child(2){
+	background-image: url("nui://inventory/web-side/images/2.png");
+}
+
+.invLeft > .item:nth-child(3){
+	background-image: url("nui://inventory/web-side/images/3.png");
+}
+
+.invLeft > .item:nth-child(4){
+	background-image: url("nui://inventory/web-side/4.png");
+}
+
+.invLeft > .item:nth-child(5){
+	background-image: url("nui://inventory/web-side/5.png");
+}
+
+.itemAmount, .invRight .item .itemWeight {
+
+	display: grid;
+	place-items: center;
+	border-radius: 2.5px;
+	height: 23px;
+	padding: 0 6px;
+	font-size: 9px;
+	font-weight: 600;
+
+}
+
+.itemAmount {
+
+	border: 1px solid rgba(87, 99, 208, .15);
+	background: rgba(87, 99, 208, .05);
+	backdrop-filter: blur(12.5px);
+	transition: all .45s;
+
+}
+
+.invRight .item.populated:hover .itemAmount {
+
+	border: 1px solid #5763D0;
+	background: rgba(87, 99, 208, .25);
+
+}
+
+.itemWeight {
+	
+	font-size: 9px;
+	font-weight: 600;
+	text-align: right;
+
+}
+
+.item .nameItem {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 0;
+	width: 100%;
+	font-size: 10px;
+	font-weight: 900;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	border-radius: 0 0 5px 5px;
+	background: var(--purple-color);
+
+}
+
+.item .durability {
+
+	width: 85%;
+	height: 2px;
+	border-radius: 5px;
+	margin: auto auto 6px auto;
+	background-color: transparent;
+
+}
+
+.item .durability .bar {
+
+	height: 100%;
+	border-radius: 5px;
+
+}
+
+.invMiddle {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 15px;
+	margin: 0 16px 5rem 16px;
+
+}
+
+input {
+	border-radius: 3px;
+	text-align: center;
+}
+
+.invMiddle div, .invMiddle input {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 101px;
+	border: 0;
+	outline: none;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) -81.88%, rgba(255, 255, 255, 0.05) 100%);
+	backdrop-filter: blur(12.5px);
+
+}
+
+.invMiddle input {
+
+	font-size: 15px;
+	font-weight: 500;
+	height: 60px;
+	color: var(--white-color);
+
+}
+
+.invMiddle div {
+
+	font-size: 14px;
+	font-weight: 700;
+	height: 55px;
+	cursor: pointer;
+
+}
+
+.ui-helper-hidden-accessible {
+	display: none;
+}
+
+.ui-tooltip {
+
+	z-index: 9999;
+	font-size: 11px;
+	border-radius: 5px;
+	position: absolute;
+	letter-spacing: 1px;
+	padding: 20px 20px 15px;
+	background: rgba(16, 16, 21, .85);
+
+}
+
+.ui-tooltip:hover {
+	display: none;
+}
+
+.ui-tooltip item {
+
+	float: left;
+	font-size: 14px;
+	font-weight: 700;
+	min-width: 200px;
+	color: var(--purple-color);
+	text-transform: uppercase;
+
+}
+
+.ui-tooltip legenda {
+	float: left;
+	min-width: 225px;
+	margin-top: 10px;
+	padding-top: 6px;
+	line-height: 20px;
+}
+
+.ui-tooltip description {
+	float: left;
+	font-size: 11px;
+	font-weight: 600;
+	max-width: 225px;
+	margin-top: 5px;
+}
+
+.ui-tooltip description green {
+	color: #a0ceb6;
+}
+
+.ui-tooltip s {
+	color: var(--purple-color);
+	padding: 0 5px;
+	text-decoration: none;
+}
+
+.ui-tooltip r {
+	color: var(--purple-color);
+}
+
+/* -------------------- TOPO -------------------- */
+
+.top_header {
+
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+
+}
+
+.left_top, .right_top {
+	
+	width: 648px;
+	max-width: 648px;
+	padding-right: 6px;
+	margin-bottom: 17px;
+	position: relative;
+
+}
+
+.right_top {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	margin-bottom: 22px;
+	padding-right: 12px;
+
+}
+
+.left_top .title, .right_top .title {
+
+	margin-bottom: 10px;
+
+}
+
+.left_top .title h1, .right_top .title h1 {
+
+	font-size: 40px;
+	font-weight: 800;
+	letter-spacing: 2px;
+
+}
+
+.left_top .weight_player, .right_top .weight_player {
+
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+
+}
+
+.left_top .weight_player .weight, .right_top .weight_player .weight {
+
+	flex: 1;
+
+}
+
+.left_top .weight_player .player_info, .right_top .weight_player .player_info {
+
+	display: flex;
+	align-items: center;
+	width: min-content;
+	gap: .63rem;
+
+}
+
+.right_top .title h1 {
+
+	font-size: 40px;
+	font-weight: 800;
+	letter-spacing: 2px;
+
+}
+
+.weight_player .player_info .border {
+
+	width: 3px;
+	height: 22px;
+	border-radius: 100px;
+	background: rgb(87, 99, 208);
+
+}
+
+.weight_player .player_info span {
+
+	font-size: 15px;
+	font-weight: 600;
+	white-space: nowrap;
+
+}
+
+.weight_player .player_info span > span {
+
+	/* font-style: italic; */
+	font-weight: 700;
+
+}
+
+.weight_player .weight .weightTextLeft, .weight_player .weight .weightTextRight {
+
+	position: absolute;
+	right: 12px;
+	top: 18px;
+
+}
+
+.weight_player .weight .weightTextRight {
+
+	right: 18px;
+
+}
+
+.weight .weightTextLeft h2, .weight .weightTextRight h2 {
+
+	font-size: 12px;
+	font-weight: 800;
+	text-align: right;
+	width: 100%;
+	margin-bottom: 5px;
+
+}
+
+.weight .weightTextLeft span, .weight .weightTextRight span  {
+
+	font-size: 10px;
+	font-weight: 500;
+	text-align: right;
+
+}
+
+.weight_player .weight #weightBarLeft, .weight_player .weight #weightBarRight {
+
+	width: 100%;
+	height: 13px;
+	background: rgba(87, 99, 208, .25);
+	border: 5px solid rgba(16, 16, 21, .75);;
+	border-radius: 100px;
+
+}
+
+.weight #weightBarLeft .weightBar, .weight #weightBarRight .weightBar {
+
+	height: 100%;
+	border-radius: 100px;
+	background: rgb(87, 99, 208);
+	transition: all .25s;
+
+}
+
+/* ---------- TRUNKCHEST ---------- */

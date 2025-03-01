@@ -1,0 +1,275 @@
+<html>
+    <head>
+        <title>#alternative</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;900&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue-axios@2.1.4/dist/vue-axios.min.js"></script>
+    </head>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Fira Sans';
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(252.4deg, rgba(30, 30, 30, 0.75) -23.93%, rgba(7, 7, 7, 0.75) 100%);
+            display: none;
+            visibility: hidden;
+
+            overflow: hidden;
+
+            user-select: none;
+        }
+
+        .background {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: url(./source/noise-background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+         /*   backdrop-filter: blur(11px);  */
+        }
+
+        .background::before {
+            position: absolute;
+            content: '';
+
+            width: 316px;
+            height: 345px;
+
+            right: -114px;
+            bottom: -137px;
+
+            background: #5763D0;
+            filter: blur(314.5px);
+        }
+
+        .background::after {
+            position: absolute;
+            content: '';
+
+            width: 316px;
+            height: 345px;
+
+            top: -206px;
+            left: -194px;
+
+            background: #272C58;
+            filter: blur(314.5px);
+        }
+
+        .responsive {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .death-icon {
+            margin-top: 100px;
+        }
+
+        .content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            flex-direction: column;
+
+        }
+
+        .time {
+            position: relative;
+            width: 376px;
+            height: 126px;
+
+            background: rgba(87, 99, 208, 0.15);
+            border: 1px solid rgba(87, 99, 208, 0.35);
+            box-shadow: 0px 0px 87px rgba(87, 99, 208, 0.2);
+            border-radius: 15px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 100px;
+
+            
+        }
+
+        .time::before {
+            content: '';
+            position: absolute;
+
+            left: 0;
+
+            width: var(--width, 0);
+            height: 126px;
+
+            background: radial-gradient(50% 1208.68% at 50% 50%, #5763D0 0%, rgba(87, 99, 208, 0.36) 100%);
+            border-right: none;
+            border-width: 2px 0px 2px 2px;
+            border-style: solid;
+            border-color: #5763D0;
+            border-radius: 15px;
+        }
+
+        /* @keyframes pulsando {
+            0% {
+                transform: scale(1);
+            } 
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        } */
+
+        .time span {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 26px;
+            letter-spacing: 0.25em;
+
+            color: rgba(255, 255, 255, 0.85);
+
+            z-index: 2;
+        }
+
+        .time h2 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 35px;
+            line-height: 42px;
+
+            color: #FFFFFF;
+
+            z-index: 2;
+        }
+
+        .line {
+            position: absolute;
+            width: 2349.39px;
+            height: 713px;
+            /* background: url(./source/background-line.png) no-repeat;
+            background-position: center; */
+
+            top: -100px;
+            right: -69px;
+
+            z-index: -100;
+        }
+
+        .line svg rect {
+            width: 1000px;
+            animation: 10s pulse infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            to {
+                width: 0;
+            }
+            50% {
+                width: 2349.39;
+            }
+            0% {
+                width: 0;
+            }
+        }
+
+        .responsive .active {
+            visibility: visible;
+        }
+
+        .desactive {
+            visibility: hidden;
+        }
+        
+        .responsive ul {
+            visibility: hidden;
+            display: flex;
+            gap: 14px;
+
+            margin-top: 46px;
+        }
+
+        .responsive ul button {
+            padding: 14px 12px;
+
+            background: linear-gradient(270deg, #5763D0 0%, rgba(87, 99, 208, 0.5) 100%);
+            border: 1px solid #5763D0;
+            border-radius: 5px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+
+            color: #FFFFFF;
+
+            cursor: pointer;
+
+            z-index: 111;
+        }
+
+        .responsive ul p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            display: flex;
+            align-items: center;
+
+            color: #FFFFFF;
+        }
+
+        .responsive span {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 50px;
+            letter-spacing: 0.175em;
+
+            color: #5763D0;
+        }
+
+        .responsive h1 {
+            font-style: normal;
+            font-weight: 900;
+            font-size: 120px;
+
+            /* animation: 2s infinite pulsando ease; */
+
+            background: linear-gradient(180deg, #5763D0 0%, #FFFFFF 0.01%, #919191 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    </style>
+    <body>
+        <main></main>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
+        <script type="text/javascript" src="./core.js"></script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+@media (max-height: 850px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-height: 790px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 740px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 685px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 640px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media (max-height: 585px) {
+    html {
+        font-size: 10px;
+    }
+}

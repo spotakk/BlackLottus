@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+    border: none;
+}
+
+button { border: none; text-decoration: none;  outline: none;  background: transparent; }
+input { border: initial; outline: none; background: initial; color: initial; font-size: initial; }
+input[type="text"]::-webkit-inner-spin-button,
+input[type="text"]::-webkit-outer-spin-button {-webkit-appearance: none; margin: 0; }
+
+#player-identity {
+    display: none;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
+
+.Identity {
+    position: relative;
+    width: 490px;
+    height: 275px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0.00) 100%), #101015;
+}
+
+.infos-texts {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+}
+
+.infos {
+    position: relative;
+    margin: 0px 20px 40px;
+    display: flex;
+    white-space: nowrap;
+    
+}
+
+.infos span {
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
+}
+
+.infos p {
+    position: absolute;
+    top: 10px;
+    left: 32px;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-up-span {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.text-up-p {
+    font-size: 1.125rem;
+    color: #FFF;
+}
+
+.text-down-span {
+    font-size: 0.750rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.text-down-p {
+    font-size: 0.875rem;
+    color: #FFF;
+
+}
+
+.job {
+    position: absolute;
+    left: 120px;
+    bottom: 118px;
+}
+
+/* Avatar */
+
+.avatar-identity {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 151px;
+    height: 225px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.change-avatar {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container-change-avatar {
+    display: none;
+
+    position: relative;
+    width: 621px;
+    height: 250px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0.00) 100%), #101015;
+}
+
+.title-change-avatar {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    white-space: nowrap;
+}
+
+.title-change-avatar h1 {
+    position: absolute;
+    top: -7px;
+    left: 40px;
+    color: #FFF;
+    font-weight: 600;
+}
+
+.title-change-avatar h2 {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.container-change-avatar input {
+    position: absolute;
+    left: 25px;
+    bottom: 85px;
+    width: 561px;
+    height: 56px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+.container-change-avatar button {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    width: 561px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #6364DC;
+    background: linear-gradient(270deg, #6364DC 1.46%, rgba(99, 100, 220, 0.65) 100%);
+    color: #fff;
+    font-weight: 600;
+}
+
+.container-change-avatar input::placeholder {
+    font-size: 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.container-change-avatar button:hover {
+    border: 1px solid #3434a5;
+    background: linear-gradient(270deg, #313180 1.46%, rgba(99, 100, 220, 0.65) 100%);
+}
+
+/* Police Card */
+
+#police-card {
+    display: none;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 431px;
+    height: 420px; 
+}
+
+.police-card-up {
+    width: 431px;
+    height: 210px;
+    border-radius: 5px 5px 0px 0px;
+    background: linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0.00) 100%), #101015;
+}
+
+.police-card-down {
+    width: 431px;
+    height: 210px;
+    border-radius: 0px 0px 5px 5px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 100%), linear-gradient(90deg, rgba(88, 110, 190, 0.04) 0%, rgba(0, 0, 0, 0.00) 100%), #101015;
+}
+
+.police-card-up-center {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 397px;
+    height: 176px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.police-card-up-center span {
+    position: absolute;
+    left: 45px;
+    top: 30px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.police-officer-text {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.750rem;
+    letter-spacing: 3.6px;
+    position: absolute;
+    bottom: 11px;
+    left: 50px;
+}
+
+.logo-police-card {
+    position: absolute;
+    left: 80px;
+    top: 62px;
+}
+
+
+.avatar-logo-police-card {
+    width: 68px;
+    height: 68px;
+    background: #000;
+    position: absolute;
+    right: 30px;
+    bottom: 40px;
+}
+
+#name-police-card {
+    color: #6364DC;
+    font-family: 'Corinthia', sans-serif;
+    font-size: 1.875rem;
+    position: absolute;
+    right: 50px;
+    bottom: 2px;
+    text-align: center;
+}
+
+#name-police-card::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: -25px;
+    width: 159px;
+    height: 1px;
+    background: #6364DC;
+}
+
+/* Police Card Down */
+
+.police-card-down-center {
+    position: absolute;
+    left: 18px;
+    bottom: 15px;
+    width: 287px;
+    height: 176px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.logo-police-card-down {
+    position: absolute;
+    right: 20px;
+    bottom: 60px;
+}
+
+.infos-police-card {
+    position: absolute;
+    top: 24px;
+}
+
+.infos-card {
+    position: relative;
+    margin: 0px 20px 40px;
+    display: flex;
+    white-space: nowrap;
+}
+
+.infos-card span {
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
+}
+
+.infos-card p {
+    position: absolute;
+    top: 10px;
+    left: 32px;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
+}

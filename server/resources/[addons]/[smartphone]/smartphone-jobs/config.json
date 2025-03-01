@@ -1,0 +1,70 @@
+{
+	"locale": "pt-BR",
+	"currency": "BRL",
+	"uber": {
+		"pricing": {
+			"base": 8,
+			"per_km": 1237
+		},
+		"common_places": [
+			{ "name": "Praça", "location": [156.9, -1012.25, 29.4] },
+			{ "name": "Hospital", "location": [-454.38, -365.89, 32.94] },
+			{ "name": "Mecânica", "location": [-360.99, -122.79, 37.99] },
+			{ "name": "Departamento Policial", "location": [2526.21, -385.6, 95.31] }
+		],
+		"cancelable": 1
+	},
+	"food": {
+		"categories": [
+			{ "id": 1, "name": "Restaurantes" },
+			{ "id": 2, "name": "Bebidas" },
+			{ "id": 3, "name": "Farmácias" }
+		],
+		"stores": [
+			{
+				"id": 1,
+				"name": "Burgershot",
+				"icon": "https://ih1.redbubble.net/image.2293502912.2530/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+				"category_id": 1,
+				"price": 1,
+				"fee": 15,
+				"location": [-1192.15, -894.6, 14.0],
+				"products": [
+					{
+						"id": 1,
+						"name": "Cheeseburguer",
+						"description": "Pão, hambúrguer, queijo cheddar, picles e ketckup.",
+						"price": 12,
+						"section": "Lanches",
+						"image": "https://d3sn2rlrwxy0ce.cloudfront.net/_800x600_crop_center-center_none/cheeseburger-thumb_2021-09-16-134559_ypzs.png?mtime=20210916094600&focal=none&tmtime=20210916095008",
+						"items": {
+							"xburguer": 1
+						}
+					},
+					{
+						"id": 2,
+						"name": "Baconburger",
+						"description": "Pão, hambúrguer, queijo cheddar, bacon e ketchup.",
+						"price": 14,
+						"section": "Lanches",
+						"image": "https://d3sn2rlrwxy0ce.cloudfront.net/_800x600_crop_center-center_none/cheeseburger-bacon-thumb_2021-09-16-134755_cxdp.png?mtime=20210916094756&focal=none&tmtime=20210916095009",
+						"items": {
+							"xburguer": 1
+						}
+					},
+					{
+						"id": 7,
+						"name": "Frango Frito",
+						"description": "Porção de 200gr de frango frito.",
+						"price": 14,
+						"section": "Lanches",
+						"image": "https://www.solucoesindustriais.com.br/images/produtos/imagens_11773/p_embalagem-balde-para-frango-frito_11773_364836_19.png",
+						"items": {
+							"frango": 1
+						}
+					}
+				]
+			}
+		]
+	}
+}

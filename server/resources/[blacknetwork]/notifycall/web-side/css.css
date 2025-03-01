@@ -1,0 +1,164 @@
+* {
+	user-select: none;
+	font-family: 'DM Sans';
+}
+
+body {
+	background-color: transparent;
+}
+
+.body {
+	right: 0;
+	top: 130px;
+	right: 20px;
+	/* height: 290px; */
+	zoom: 1.0;
+	display: flex;
+	color: #fff;
+	padding: 15px 0;
+	overflow: hidden;
+	position: absolute;
+	align-items: flex-end;
+	flex-direction: column;
+}
+
+.container {
+	margin-right: 30px;
+}
+
+.notification {
+	position: relative;
+	display: flex;
+	width: 250px;
+	font-size: 10px;
+	padding: 12px;
+	align-items: center;
+	margin-bottom: 10px;
+	background: #101015;
+	border-radius: 12px;
+}
+
+.background-progress {
+	position: absolute;
+	width: 87%;
+	height: 3px;
+	background: rgba(255, 255, 255, 0.05);
+
+	left: 50%;
+  transform: translate(-50%, 0);
+	bottom: 0;
+}
+
+.progress {
+	width: 100%;
+	height: 3px;
+	
+	background: #FFFFFF;
+	border-radius: 12px;
+
+	animation: 5s progress-animation forwards;
+}
+
+@keyframes progress-animation {
+	to {
+		width: 0;
+	}
+
+	from {
+		width: 100%;
+	}
+}
+
+.content {
+	font-size: 12px;
+}
+
+.buttons {
+	display: flex;
+}
+
+.content-line {
+	margin: 9px 0;
+	margin-left: 14px;
+}
+
+.content-line span {
+	color: rgba(255, 255, 255, 0.75);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+}
+
+.content-line .icon {
+	color: rgba(255, 255, 255, 0.25);;
+}
+
+.actions {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translate(0,-50%);
+}
+
+.chamados {
+	position: relative;
+	width: 34px;
+	height: 34px;
+	display: flex;
+	border-radius: 5px;
+	align-items: center;
+	transition: all .2s;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.chamados:first-child {
+	margin-top: 0;
+}
+
+.chamados:hover {
+	background-color: #263A80;
+}
+
+.chamados svg {
+	z-index: 99999999;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.55);;
+}
+
+.titulo {
+	position: relative;
+	display: flex;
+	/* margin: 0 10px; */
+	overflow: hidden;
+	font-weight: bold;
+	white-space: nowrap;
+	align-items: center;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+}
+
+.titulo .code {
+	padding: 5px 8px;
+	border-radius: 6px;
+	background: #263A80;
+}
+
+.code span {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+::-webkit-scrollbar {
+	background: transparent;
+	width: 0;
+}
+
+::selection {
+	background: transparent;
+}
+
+::-moz-selection {
+	background: transparent;
+}

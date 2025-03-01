@@ -1,0 +1,187 @@
+
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    user-select: none;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container {
+	position: relative;
+	margin: 12% auto;
+	height: 440px;
+	width: 400px;
+	border-radius:25px 25px 25px 25px;
+	background: #292a31;
+}
+
+strong {
+	font-weight: bold !important;
+}
+
+.box-banco {
+	position: absolute;
+	width: 940px;
+	height: 300px;
+	padding: 10px;
+	margin: 15% 8%;
+	display: inline-flex;
+}
+
+.texto {
+	width: 150px;
+	height: 40px;
+	left: 50px;
+	font-size: 9.5px;
+	bottom: 65%;
+	text-align: center;
+	border-radius: 18px;
+}
+
+.texto:hover{
+	background-color:#dcdcdc ;
+	margin: 0;
+}
+
+.card-nu {
+	width: 300px;
+	border-radius: 4px;
+	background: #FFF;
+	height: 280px;
+	margin-right: 22px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.solicitaremprestimo { 
+	color: white;
+	width: 300px;
+	border-radius: 4px;
+	background: #377c31;
+	height: 280px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	position: absolute;
+	bottom: 5px;
+	right: 15px;
+	left: 15px;
+}
+
+.titulo {
+	margin-right: 20%;
+
+}
+
+.cartao {
+	color: white;
+	width: 140px;
+	height: 30px;
+	border-radius: 8px;
+	padding: 5px;
+	font-size: 11px;
+	text-align: center;
+	position: relative;
+	text-align: center;
+	background-color: rgba(0,0,0,0.3);
+	bottom: 3%;
+	left: 28.5%;
+	border: 0;
+	margin-bottom: 10%;
+}
+
+.cartao:hover{
+	background-color: #292a31;
+}
+
+.cartao:focus,
+input:focus,
+select:focus {
+	box-shadow: 0 0 0 0;
+	border: 0;
+	outline: 0;
+}
+
+.card-header {
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+	margin-left: 20%;
+}
+
+.card-content__title {
+	font-size: 13px;
+}
+
+.card-content__value {
+	font-size: 22px;
+	margin-top: 5px;
+	font-weight: lighter;
+}
+
+.card-footer {
+	padding: 20px;
+	background: #f9f9f9;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.card-footercartao {
+	padding: 20px;
+	background: #292a31;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.card-footer__description {
+	font-size: 10px;
+}
+
+
+.tag--cartao {
+	background: #008521;
+	color: #FFF;
+	font-size: 10.2px;
+	padding: 2px 8px;
+	border-radius: 10px;
+	line-height: 18px;
+}
+
+.margin {
+	width: 100%;
+	margin-top: 5%;
+}
+
+.margin span {
+	font-size: 9.5px;
+	color: #4f4f4f;
+	line-height: 18px;
+}
+
+
+
+#imagem {
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	height: 37px;
+	width: 100px;
+}
+

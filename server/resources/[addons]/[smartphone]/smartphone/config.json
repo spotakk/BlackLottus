@@ -1,0 +1,47 @@
+{
+	"token": "crnetwork",
+	"client": {
+	  "bankType": "fleeca",
+	  "uploadServer": "https://discord.com/api/webhooks/1022226567134445679/bzPwgMcgloo06QBJsVi0zQ-jUw5x5qRDiIFQQRduf2SMhD-K63GwKyFSMYkLQHtgOvzm",
+	  "allowUnsafeURL": true,
+	  "videoServer": "ws://127.0.0.1:8080/",
+	  "case": "iphonexs",
+	  "isAndroid": false,
+	  "useGameClock": true,
+	  "phone_template": "XXX-XXX",
+	  "disabledApps": ["paypal"]
+	},
+	"exclusive": {
+	  "weazel": {
+		"tags": [
+		  "Noticias"
+		],
+		"permission": "manager.permissao"
+	  },
+	  "casino": {
+		"maxBet": 100000
+	  }
+	},
+	"call_mode": "pma-voice",
+	"webhookURL": "https://discord.com/api/webhooks/1022226567134445679/bzPwgMcgloo06QBJsVi0zQ-jUw5x5qRDiIFQQRduf2SMhD-K63GwKyFSMYkLQHtgOvzm",
+	"instagram_verify": "verificado",
+	"weazel_tags": "staff",
+	"instagram_accounts": {
+	  "*": 1,
+	  "admin": 2
+	},
+	"services": [
+	  { "name": "Policia", "number": "190", "permission": "Police" },
+	  { "name": "Paramédico", "number": "192", "permission": "Paramedic" },
+	  { "name": "Mecânico", "number": "0800 042", "permission": "Mechanic" },
+	  { "name": "SeaFood", "number": "0800 041", "permission": "SeaFood" },
+	  { "name": "SnackKing", "number": "0800 043", "permission": "SnackKing" },
+	  { "name": "Taxi", "number": "0800 075", "permission": "Taxi" },
+	  { "name": "Advogado", "number": "200", "permission": "Advogado" }
+	],
+	"moderator": "admin",
+	"item": "cellphone",
+  
+	"base": "creative_v5",
+	"channel": "stable"
+  }

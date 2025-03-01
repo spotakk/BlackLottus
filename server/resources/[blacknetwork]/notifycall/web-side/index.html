@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="nui://game/ui/jquery.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+		<link href="css.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+		<div class="body"></div>
+	</body>
+
+	<script>
+		$(document).ready(function(){
+			let blocked = false
+			let list = []
+			window.addEventListener("message",function(event){
+				switch(event.data.action){
+					case 'notify':
+						addNotification(event.data.data)
+					break
+					case 'showAll':
+						if (list.length > 0){
+							showLast()
+							$.post("http://notifycall/focusOn")
+						}
+					break
+					case 'hideAll':
+						hideAll()
+						$.post("http://notifycall/focusOff")
+					break
+				}
+			});
+
+			document.onkeyup = function(data){
+				if (data.which == 27){
+					hideAll()
+					$.post("http://notifycall/focusOff")
+				}
+			};
+
+			$(document).on("click","#loc",function(){
+				$.post("http://notifycall/setWay",JSON.stringify({ x: $(this).attr("data-x"), y: $(this).attr("data-y") }))
+			});
+
+			$(document).on("click","#phone",function(){
+				$.post("http://notifycall/phoneCall",JSON.stringify({ phone: $(this).attr("data-phone") }))
+			});
+
+			$(document).on("click","#removeDiv",function(){
+				$(this).parent().parent().remove()
+				list.shift()
+			});
+
+			const hideAll = () => {
+				blocked = false
+				$(".body").css("overflow","hidden")
+				$(".body").html("")
+			};
+
+			const addNotification = data => {
+				if (list.length > 9) list.shift()
+
+				const html = (children) => `
+				<div class="notification">
+					<div class="container">
+						<div class="titulo"><div class="code">${data.code === undefined ? "" : `${data.code}`}</div>  ・  <span>${data.title}</span></div>
+						${data.street === undefined ? "" : `<div class="content-line"><i class="fas fa-street-view icon"></i>  <span>${data.street}</span></div>`}
+						${data.criminal === undefined ? "" : `<div class="content-line"><i class="fas fa-user-ninja icon"></i>  <span>${data.criminal}</span></div>`}
+						${data.name === undefined ? "" : `<div class="content-line"><i class="fas fa-user icon"></i>  <span>${data.name}</span></div>`}
+						${data.vehicle === undefined ? "" : `<div class="content-line"><i class="fas fa-car icon"></i>  <span>${data.vehicle}</span></div>`}
+						${data.time === undefined ? "" : `<div class="content-line"><i class="fas fa-clock icon"></i>  <span>${data.time}</span></div>`}
+					</div>
+					<div class="actions">
+						<div class="chamados" id="loc" data-x="${data.x}" data-y="${data.y}"><i class="fas fa-map-marker-alt fa-lg"></i></div>
+					</div>
+					${children ? children : ''}
+				</div>`
+
+				const progress = `
+					<div class="background-progress">
+						<div class="progress"></div>
+					</div>
+				`
+
+				list.push(html())
+
+				if (!blocked){
+					$(html(progress)).prependTo(".body")
+					.hide()
+					.show("slide",{ direction: "right" },250)
+					.delay(5000)
+					.hide("slide",{ direction: "right" },250)
+				}
+			};
+
+			const showLast = () => {
+				hideAll()
+				blocked = true
+
+				$(".body").css("overflow-y","scroll")
+				for (i in list){
+					$(list[i]).prependTo(".body")
+				}
+			};
+		});
+	</script>
+</html>

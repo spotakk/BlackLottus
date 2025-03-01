@@ -1,0 +1,15 @@
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+-- -- ME
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+-- RegisterCommand("me",function(source,args,rawCommand)
+-- 	local user_id = vRP.getUserId(source)
+-- 	if user_id then
+-- 		if args[1] then
+-- 			if vRP.getHealth(source) > 101 then
+-- 				clientAPI.pressMe(-1,source,rawCommand:sub(3))
+-- 			else
+-- 				TriggerClientEvent("Notify",source,"atenção","Você não pode utilizar <b>nocauteado</b>.",10000)
+-- 			end
+-- 		end
+-- 	end
+-- end)
